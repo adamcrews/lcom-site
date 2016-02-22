@@ -51,5 +51,16 @@ mod 'puppetserver',
   :git => 'https://github.com/camptocamp/puppet-puppetserver.git',
   :ref => '2.0.1'
 
-###############################################################################
+mod 'apt',
+  :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
+  :ref => '2.2.1'
 
+mod 'augeas',
+  :git => 'https://github.com/camptocamp/puppet-augeas.git',
+  :ref => '1.4.2'
+
+mod 'augeasproviders_core',
+  :git => 'https://github.com/hercules-team/augeasproviders_core.git',
+  :ref => '2.1.2'
+
+###############################################################################
