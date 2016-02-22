@@ -41,7 +41,7 @@ mod 'r10k',
 
 mod 'hiera',
   :git => 'https://github.com/hunner/puppet-hiera.git',
-  :ref => 'v0.2.0'
+  :ref => '2.0.1'
 
 mod 'staging',
   :git => 'https://github.com/nanliu/puppet-staging.git',
