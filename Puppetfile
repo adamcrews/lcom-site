@@ -63,4 +63,16 @@ mod 'augeasproviders_core',
   :git => 'https://github.com/hercules-team/augeasproviders_core.git',
   :ref => '2.1.2'
 
+mod 'postgresql',
+  :git => 'https://github.com/puppetlabs/puppetlabs-postgresql.git',
+  :ref => '4.7.1'
+
+mod 'firewall',
+  :git => 'https://github.com/puppetlabs/puppetlabs-firewall.git',
+  :ref => '1.8.0'
+
+mod 'puppetdb',
+  :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
+  :ref => '5.1.1'
+
 ###############################################################################
