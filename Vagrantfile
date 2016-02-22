@@ -1,6 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Check for missing plugins
+required_plugins = %w(vagrant-hosts)
+plugin_installed = false
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin?(plugin)
+    system "vagrant plugin install #{plugin}"
+    plugin_installed = true
+  end
+end
+
+# If new plugins installed, restart Vagrant process
+if plugin_installed === true
+  exec "vagrant #{ARGV.join' '}"
+end
+
 localuser = Etc.getpwuid(Process.euid).name
 my_repo = `git remote -v`.split[1]
 
@@ -39,6 +54,7 @@ Vagrant.configure(2) do |config|
         node.vm.network "forwarded_port", guest: 3389, host: 3389, id: "rdp", auto_correct: true
         node.vm.network "forwarded_port", guest: 5985, host: 5985, id: "winrm", auto_correct: true
         node.windows.set_work_network = true
+        node.vm.provision :hosts, :sync_hosts => true
 #        node.vm.provision 'shell', path: "bootstrap/Install-Puppet.ps1", args: [ puppetversion, puppetmaster ]
       else
         node.vm.box = box
@@ -47,6 +63,7 @@ Vagrant.configure(2) do |config|
         node.vm.network :private_network, :auto_network => true
         node.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
         node.vm.network "forwarded_port", guest: 8090, host: 8090, auto_correct: true
+        node.vm.provision :hosts, :sync_hosts => true
         node.vm.provision 'shell', path: 'scripts/bootstrap.sh', args: [ '-r', role, '-k', my_repo ]
       end
     end
