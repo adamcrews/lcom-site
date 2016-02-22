@@ -1,51 +1,55 @@
 forge 'http://forge.puppetlabs.com'
 
-mod 'ntp',
-  :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git'
-
 ###############################################################################
 # General dependencies
 
 mod 'stdlib',
-  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
-
-mod 'inifile',
-  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
-
-mod 'concat',
-  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git'
-
-mod 'hiera',
-  :git => 'https://github.com/hunner/puppet-hiera.git'
-
-mod 'ruby',
-  :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git'
-
-mod 'gcc',
-  :git => 'https://github.com/puppetlabs/puppetlabs-gcc.git'
-
-mod 'vcsrepo',
-  :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git'
-
-mod 'git',
-  :git => 'https://github.com/puppetlabs/puppetlabs-git.git'
+  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
+  :ref => '4.11.0'
 
 mod 'make',
-  :git => 'https://github.com/croddy/puppet-make.git'
+  :git => 'https://github.com/croddy/puppet-make.git',
+  :ref => 'v0.0.5'
 
-mod 'pe_gem',
-  :git => 'https://github.com/puppetlabs/puppetlabs-pe_gem.git'
+mod 'gcc',
+  :git => 'https://github.com/puppetlabs/puppetlabs-gcc.git',
+  :ref => '0.3.0'
+
+mod 'concat',
+  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
+  :ref => '2.1.0'
+
+mod 'git',
+  :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
+  :ref => '0.4.0'
+
+mod 'inifile',
+  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
+  :ref => '1.4.3'
+
+mod 'ruby',
+  :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git',
+  :ref => '0.4.0'
+
+mod 'vcsrepo',
+  :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git',
+  :ref => '1.3.2'
 
 mod 'r10k',
-  :git => 'https://github.com/acidprime/r10k.git'
+  :git => 'https://github.com/acidprime/r10k.git',
+  :ref => 'v3.2.0'
 
-mod 'java',
-  :git => 'https://github.com/puppetlabs/puppetlabs-java.git'
+mod 'hiera',
+  :git => 'https://github.com/hunner/puppet-hiera.git',
+  :ref => 'v0.2.0'
 
 mod 'staging',
-  :git => 'https://github.com/nanliu/puppet-staging.git'
+  :git => 'https://github.com/nanliu/puppet-staging.git',
+  :ref => '1.0.4'
 
-mod 'epel',
-  :git => 'https://github.com/stahnma/puppet-module-epel.git'
+mod 'puppetserver',
+  :git => 'https://github.com/camptocamp/puppet-puppetserver.git',
+  :ref => '2.0.1'
 
 ###############################################################################
+

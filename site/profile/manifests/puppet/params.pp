@@ -6,12 +6,4 @@ class profile::puppet::params {
   $confdir = "/etc/puppetlabs/code"
   $hieradir = "${confdir}/environments/%{::environment}/hieradata"
   $environmentpath = "${confdir}/environments"
-  case $::settings::server {
-    'xmaster.vagrant.vm': {
-      $remote = '/vagrant'
-    }
-    default: {
-      $remote = 'git@github.com:terrimonster/puppet-control.git'
-    }
-  }
 }
