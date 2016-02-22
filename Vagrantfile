@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define n do |node|
       node.vm.provider :virtualbox do |vb|
-        vb.customize [ "modifyvm", :id, "--memory", "4096"]
+        vb.customize [ "modifyvm", :id, "--memory", "8192"]
         vb.customize [ "modifyvm", :id, "--cpus", "4"]
         vb.customize [ "modifyvm", :id, "--ioapic", "on"]
         if os == 'windows'
@@ -63,7 +63,13 @@ Vagrant.configure(2) do |config|
         node.vm.network :private_network, :auto_network => true
         node.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
         node.vm.network "forwarded_port", guest: 8090, host: 8090, auto_correct: true
-        node.vm.provision :hosts, :sync_hosts => true
+        node.vm.provision :hosts do |prov|
+          prov.autoconfigure = true
+          prov.sync_hosts = true
+          if role == 'master'
+            prov.add_host '127.0.0.1', [ "vagrant-#{role}.learning.local" ]
+          end
+        end
         node.vm.provision 'shell', path: 'scripts/bootstrap.sh', args: [ '-r', role, '-k', my_repo ]
       end
     end
