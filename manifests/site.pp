@@ -9,10 +9,7 @@ Package {
   allow_virtual => true,
 }
 
-node /vagrant-master/ {
-  include ::role::puppet::master
+case $::kernel {
+  'windows': Package { provider => chocolatey, }
 }
 
-#node default {
-#
-#}
