@@ -17,7 +17,7 @@ class profile::puppet::hiera (
     ],
     datadir   => $profile::puppet::params::hieradir,
     backends  => $backends,
-    notify    => Service['puppetserver'],
+    notify    => Service['pe-puppetserver'],
   }
 
 }
