@@ -9,6 +9,10 @@ Package {
   allow_virtual => true,
 }
 
+node /vagrant-master/ {
+  include ::role::puppet::master
+}
+
 node default {
 
 }
