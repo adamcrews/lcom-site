@@ -6,8 +6,9 @@ class profile::puppet::r10k {
   class { '::r10k':
     remote                 => $remote,
     include_prerun_command => $include_prerun,
+    cachedir               => '/opt/puppetlabs/puppet/cache/r10k'
   }
 
-  include ::r10k::webhook
+  #  include ::r10k::webhook
 
 }

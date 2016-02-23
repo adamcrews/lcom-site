@@ -1,9 +1,9 @@
-filebucket { 'main':
-  server => $::servername,
-  path   => false,
-}
+#filebucket { 'main':
+#  server => $::servername,
+#  path   => false,
+#}
 
-File { backup => 'main' }
+#File { backup => 'main' }
 
 Package {
   allow_virtual => true,
