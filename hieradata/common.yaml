@@ -3,8 +3,3 @@ message: "This is our common yaml file"
 ntpservers:
  - north-america.pool.ntp.org
  - ntp.lucier.net
-
-r10k::remote: 'https://github.com/adamcrews/lcom-site.git'
-
-#puppetdb::master::config::puppetdb_disable_ssl: true
-#puppetdb::disable_ssl: true
