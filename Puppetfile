@@ -75,4 +75,6 @@ mod 'puppetdb',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
   :ref => '5.1.1'
 
+mod 'puppetlabs/sqlserver', '1.1.1'
+
 ###############################################################################
