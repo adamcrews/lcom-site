@@ -75,6 +75,12 @@ mod 'puppetdb',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
   :ref => '5.1.1'
 
-mod 'puppetlabs/sqlserver', '1.1.1'
+mod 'chocolatey/chocolatey', '1.2.1'
+mod 'puppetlabs/powershell', '1.0.6'
+mod 'badgerious/windows_env', '2.2.2'
+
+mod 'bryana/ec2tagfacts', '0.1.17'
+
+mod 'puppet/iis', '2.0.0'
 
 ###############################################################################
