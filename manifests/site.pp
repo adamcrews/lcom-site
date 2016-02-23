@@ -10,6 +10,6 @@ Package {
 }
 
 case $::kernel {
-  'windows': Package { provider => chocolatey, }
+  'windows': { Package { provider => chocolatey, } }
 }
 
