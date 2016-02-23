@@ -72,7 +72,7 @@ install_master() {
   install_puppet_module 'zack/r10k'
 
   # Generate our master certs
-  /opt/puppetlabs/bin/puppet config set --section main dns_alt_names = puppet,puppet.$(/opt/puppetlabs/bin/facter domain),$(/opt/puppetlabs/bin/facter hostname),$(/opt/puppetlabs/bin/facter fqdn)
+  /opt/puppetlabs/bin/puppet config set --section main dns_alt_names puppet,puppet.$(/opt/puppetlabs/bin/facter domain),$(/opt/puppetlabs/bin/facter hostname),$(/opt/puppetlabs/bin/facter fqdn)
   rm -rf $(puppet config print ssldir) 
   (cmdpid=$BASHPID; (sleep 20; kill $cmdpid) & exec /opt/puppetlabs/bin/puppet master --no-daemonize --verbose )
 
