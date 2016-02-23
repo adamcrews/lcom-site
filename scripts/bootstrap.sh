@@ -72,9 +72,9 @@ install_master() {
   install_puppet_module 'zack/r10k'
 
   # Generate our master certs
-  puppet config set --section main dns_alt_names = puppet,puppet.$(facter domain),$(facter hostname),$(facter fqdn)
+  /opt/puppetlabs/bin/puppet config set --section main dns_alt_names = puppet,puppet.$(/opt/puppetlabs/bin/facter domain),$(/opt/puppetlabs/bin/facter hostname),$(/opt/puppetlabs/bin/facter fqdn)
   rm -rf $(puppet config print ssldir) 
-  (cmdpid=$BASHPID; (sleep 20; kill $cmdpid) & exec puppet master --no-daemonize --verbose )
+  (cmdpid=$BASHPID; (sleep 20; kill $cmdpid) & exec /opt/puppetlabs/bin/puppet master --no-daemonize --verbose )
 
   # Egg, meet Chicken.
   # We need puppet configured properly so it can configure r10k, but
@@ -84,6 +84,7 @@ install_master() {
   r10k deploy environment -p -v
 
   # Apply the master profile(s)
+  /opt/puppetlabs/bin/puppet resource service puppetserver ensure=running
   /opt/puppetlabs/bin/puppet apply -e 'include ::profile::puppet::hiera'
   /opt/puppetlabs/bin/puppet apply -e 'include ::role::puppet::master'
 
