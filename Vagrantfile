@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Check for missing plugins
-required_plugins = %w(vagrant-hosts)
+required_plugins = %w(vagrant-hosts vagrant-aws)
 plugin_installed = false
 required_plugins.each do |plugin|
   unless Vagrant.has_plugin?(plugin)
@@ -43,6 +43,14 @@ Vagrant.configure(2) do |config|
         if os == 'windows'
           vb.customize ["guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000]
         end
+
+#        node.vm.provider :aws do |aws|
+#          aws.access_key_id = "#{ENV[:AWS_ACCESS_KEY_ID]}"
+#          aws.secret_access_key = "#{ENV[:AWS_SECRET_ACCESS_KEY]}"
+#          aws.availability_zone = "#{ENV[:AWS_AVAILABILITY_ZONE]}"
+#          aws.region = "#{ENV[:AWS_DEFAULT_REGION]}" || 'us-west-2'
+#          aws.subnet_id = "#{ENV[:AWS_SUBNET_ID]}"
+#        end
       end
 
       if os == 'windows'
@@ -67,7 +75,7 @@ Vagrant.configure(2) do |config|
           prov.autoconfigure = true
           prov.sync_hosts = true
           if role == 'master'
-            prov.add_host '127.0.0.1', [ "vagrant-#{role}.learning.local" ]
+            prov.add_host '127.0.0.1', [ "vagrant-#{role}", 'puppet' ]
           end
         end
         node.vm.provision 'shell', path: 'scripts/bootstrap.sh', args: [ '-r', role, '-k', my_repo ]

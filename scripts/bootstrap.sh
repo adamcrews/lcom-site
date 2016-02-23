@@ -71,6 +71,11 @@ install_master() {
   install_pkg puppetserver
   install_puppet_module 'zack/r10k'
 
+  # Generate our master certs
+  puppet config set --section main dns_alt_names = puppet,puppet.$(facter domain),$(facter hostname),$(facter fqdn)
+  rm -rf $(puppet config print ssldir) 
+  (cmdpid=$BASHPID; (sleep 20; kill $cmdpid) & exec puppet master --no-daemonize --verbose )
+
   # Egg, meet Chicken.
   # We need puppet configured properly so it can configure r10k, but
   # we need r10k configured properly so puppet can be configured.
