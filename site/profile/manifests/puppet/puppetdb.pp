@@ -1,10 +1,8 @@
 class profile::puppet::puppetdb {
 
-  class { 'puppetdb': 
-    disable_ssl => true,
-  }
+  class { 'puppetdb': }
   class { 'puppetdb::master::config': 
-    puppetdb_disable_ssl => true,
+    manage_report_processor => true,
   }
 
 }
