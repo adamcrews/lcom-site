@@ -82,5 +82,6 @@ mod 'badgerious/windows_env', '2.2.2'
 mod 'bryana/ec2tagfacts', '0.1.17'
 
 mod 'puppet/iis', '2.0.0'
+mod 'puppet/windowsfeature', '1.1.0'
 
 ###############################################################################
